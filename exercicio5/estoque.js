@@ -77,7 +77,8 @@ export default class Estoque {
 
     static buscarProduto(codigo){
         if(this.indiceProduto(codigo) !== -1) {
-            console.log(`Produto encontrado: ${JSON.stringify(this.listaProdutos[this.indiceProduto(codigo)])}`)
+            const obj = this.listaProdutos[this.indiceProduto(codigo)]
+            console.log(`Produto encontrado:\nCodigo:${obj.codigo}\nNome: ${obj.nome}\nPreço: R$ ${obj.preco}\nQuantidade: ${obj.quantidade}`)
         } else {
             console.log("Produto não encontrado no estoque!")
         }

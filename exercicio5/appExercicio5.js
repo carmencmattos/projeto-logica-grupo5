@@ -11,6 +11,7 @@ do {
     switch (Number(optionMenu)) {
         case 1:
             {
+                console.log("-----------------------------------------------------------")
                 const codigoProduto = prompt(console.log("Informe o codigo do produto: "))
                 const nomeProduto = prompt(console.log("Informe o nome do produto: "))
                 const precoProduto = prompt(console.log("Informe o preço do produto: "))
@@ -22,27 +23,33 @@ do {
             break;
         case 2:
             {
+                console.log("-----------------------------------------------------------")
                 const codigoProduto = prompt(console.log("Informe o codigo do produto a ser removido: "))
                 Estoque.removerProduto(codigoProduto)
+                console.log("-----------------------------------------------------------")
             }
             break;
         case 3:
             {
+                console.log("-----------------------------------------------------------")
                 const codigoProduto = prompt(console.log("Informe o codigo do produto procurado: "))
                 Estoque.buscarProduto(codigoProduto)
                 console.log("-----------------------------------------------------------")
             }
             break;
-        case 4:    
+        case 4:
+            console.log("-----------------------------------------------------------")   
             Estoque.listarProdutos()
             console.log("-----------------------------------------------------------")     
             break;
         case 5:
+            console.log("-----------------------------------------------------------")
             Estoque.calcularValorEstoque()
             console.log("-----------------------------------------------------------")
             break;
         case 6:
             {
+                console.log("-----------------------------------------------------------")
                 const codigo = prompt(console.log("Informe o codigo do produto: "))
                 const propriedadeProduto = prompt(console.log("Informe a propriedade que deseja alterar: "))
                 const novoValor = prompt(console.log("Informe o nome do produto: "))
