@@ -1,8 +1,65 @@
+
 export default class Estoque {
-    static listaProdutos = []
-    
+    static listaProdutos = [
+        {
+            codigo: '1',
+            nome: "caneta",
+            preco: 1,
+            quantidade: 2
+        },
+        {
+            codigo: '2',
+            nome: "borracha",
+            preco: 0.5,
+            quantidade: 3
+        },
+        {
+            codigo: '3',
+            nome: "resma de papel",
+            preco: 30,
+            quantidade: 1
+        },
+        {
+            codigo: '4',
+            nome: "lapis",
+            preco: 1.5,
+            quantidade: 5
+        },
+        {
+            codigo: '5',
+            nome: "grampeador",
+            preco: 7,
+            quantidade: 5
+        },
+        {
+            codigo: '6',
+            nome: "caderno",
+            preco: 10,
+            quantidade: 2
+        },
+        {
+            codigo: '7',
+            nome: "caderno homem-aranha",
+            preco: 50,
+            quantidade: 1
+        },
+    ]
+    static produtoJaExiste(produto) {
+        return this.listaProdutos.some( p => {
+            if(p.codigo == produto.codigo || p.nome == produto.nome) {
+                return true
+            }
+            return false
+        })
+        
+    }
     static adicionarProduto(produto) {
-        this.listaProdutos.push(produto)
+        if(this.produtoJaExiste(produto)) {
+            console.log('Produto ja consta no estoque')
+        } else {
+            this.listaProdutos.push(produto)
+            console.log('Inserido com sucesso!')
+        }
     }
 
     static indiceProduto(codigo) {
@@ -32,15 +89,15 @@ export default class Estoque {
     }
 
     static calcularValorEstoque(){
-        console.log(this.listaProdutos.reduce((soma, valorAtual) => {return soma + valorAtual.preco}, 0)) 
-
+        const arrayValorTotalPorProduto = this.listaProdutos.map(produto => produto.quantidade * produto.preco)
+        console.log(arrayValorTotalPorProduto.reduce((soma, valorAtual) => {return soma + valorAtual}, 0)) 
     }
 
     static alterarProdutos(codigo, propriedade, novoValor) {
         if(this.indiceProduto(codigo) !== -1) {
-            this.listaProdutos[this.indiceProduto()] = {...this.listaProdutos[this.indiceProduto()], [propriedade]: novoValor}
+            this.listaProdutos[this.indiceProduto(codigo)] = {...this.listaProdutos[this.indiceProduto(codigo)], [propriedade]: novoValor}
             console.log(this.listaProdutos[this.indiceProduto()])
-            return "Produto alterado com sucesso!"
+            console.log("Produto alterado com sucesso!")
         }  else {
             console.log("Produto não encontrado no estoque!")
         }
