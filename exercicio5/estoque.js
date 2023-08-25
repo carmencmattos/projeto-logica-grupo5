@@ -32,7 +32,18 @@ export default class Estoque {
     }
 
     static calcularValorEstoque(){
-        console.log(this.listaProdutos.reduce((soma, valorAtual) => {soma + valorAtual.preco}, 0)) 
+        console.log(this.listaProdutos.reduce((soma, valorAtual) => {return soma + valorAtual.preco}, 0)) 
+
+    }
+
+    static alterarProdutos(codigo, propriedade, novoValor) {
+        if(this.indiceProduto(codigo) !== -1) {
+            this.listaProdutos[this.indiceProduto()] = {...this.listaProdutos[this.indiceProduto()], [propriedade]: novoValor}
+            console.log(this.listaProdutos[this.indiceProduto()])
+            return "Produto alterado com sucesso!"
+        }  else {
+            console.log("Produto não encontrado no estoque!")
+        }
     }
 
 }
