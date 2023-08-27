@@ -1,6 +1,5 @@
+import Data from "./exercicio2.js";
 export default class Voo {
-    numeroVoo;
-    data;
     
     constructor (numeroVoo, data) {
         const poltronas = []
@@ -9,7 +8,7 @@ export default class Voo {
         }
         this.poltronas = poltronas
         this.numeroVoo = numeroVoo
-        this.data = data
+        this.data = new Data(data)
         
     }
 
